@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-balancer-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: load-balancer-app
+  template:
+    metadata:
+      labels:
+        app: load-balancer-app
+    spec:
+      containers:
+        - name: load-balancer-app
+          image: mercyrodrgz/load-balancer-app:latest
+          ports:
+            - containerPort: 3000
